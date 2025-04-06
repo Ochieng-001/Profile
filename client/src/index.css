@@ -18,26 +18,26 @@
 
 @layer components {
   .animated-bg {
-    background: linear-gradient(-45deg, #0f172a, #1e293b, #1e40af, #3b82f6);
+    background: linear-gradient(-45deg, #0f172a, #1e3a8a, #2563eb, #3b82f6);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
   }
 
   .glass {
-    @apply bg-white/10 backdrop-blur-md border border-white/10;
+    @apply bg-white/20 backdrop-blur-md border border-blue-500/20;
   }
   
   .glass-dark {
-    @apply bg-black/60 backdrop-blur-md border border-white/5;
+    @apply bg-black/70 backdrop-blur-md border border-blue-500/10;
   }
   
   .theme-light {
-    --bg-primary: #f8fafc;
-    --text-primary: #1e293b;
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(255, 255, 255, 0.5);
-    --glass-dark-bg: rgba(255, 255, 255, 0.9);
-    --glass-dark-border: rgba(0, 0, 0, 0.1);
+    --bg-primary: #eef2ff;
+    --text-primary: #1e3a8a;
+    --glass-bg: rgba(220, 230, 255, 0.5);
+    --glass-border: rgba(100, 120, 200, 0.3);
+    --glass-dark-bg: rgba(200, 220, 255, 0.85);
+    --glass-dark-border: rgba(50, 100, 200, 0.2);
   }
   
   .theme-dark {

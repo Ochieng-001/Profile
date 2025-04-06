@@ -37,25 +37,32 @@ export default function Header() {
     setMobileMenuOpen(false);
   };
 
-  const NavLink = ({ href, children }: { href: string, children: React.ReactNode }) => (
-    <a 
-      href={href} 
-      className={`${currentSection === href.substring(1) ? 'text-white font-medium' : 'text-gray-300'} hover:text-white transition-colors duration-300`}
-      onClick={closeMobileMenu}
-    >
-      {children}
-    </a>
-  );
+  const NavLink = ({ href, children }: { href: string, children: React.ReactNode }) => {
+    const isLight = document.documentElement.classList.contains('theme-light');
+    return (
+      <a 
+        href={href} 
+        className={`${
+          currentSection === href.substring(1) 
+            ? (isLight ? 'text-blue-800 font-medium' : 'text-white font-medium') 
+            : (isLight ? 'text-blue-600' : 'text-gray-300')
+        } hover:${isLight ? 'text-blue-900' : 'text-white'} transition-colors duration-300`}
+        onClick={closeMobileMenu}
+      >
+        {children}
+      </a>
+    );
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 glass-dark">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <a href="#" className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-blue-500 flex items-center justify-center">
-              <i className="fas fa-crown text-yellow-300"></i>
+            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-blue-500 flex items-center justify-center shadow-md">
+              <i className="fas fa-crown text-yellow-300 text-lg"></i>
             </div>
-            <span className="text-xl font-semibold tracking-tight">Emperoh</span>
+            <span className="text-xl font-bold tracking-tight">Emperoh</span>
           </a>
           
           <div className="flex items-center space-x-4">

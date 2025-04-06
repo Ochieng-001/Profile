@@ -53,20 +53,20 @@ export default function ThemeToggle() {
     document.documentElement.classList.remove('theme-dark');
     document.documentElement.style.setProperty('color-scheme', 'light');
     
-    // Update glass styles
+    // Update glass styles with better contrast
     document.querySelectorAll('.glass').forEach(el => {
-      (el as HTMLElement).style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
-      (el as HTMLElement).style.borderColor = 'rgba(255, 255, 255, 0.5)';
+      (el as HTMLElement).style.backgroundColor = 'rgba(220, 230, 255, 0.5)';
+      (el as HTMLElement).style.borderColor = 'rgba(100, 120, 200, 0.3)';
     });
     
     document.querySelectorAll('.glass-dark').forEach(el => {
-      (el as HTMLElement).style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
-      (el as HTMLElement).style.borderColor = 'rgba(0, 0, 0, 0.1)';
+      (el as HTMLElement).style.backgroundColor = 'rgba(200, 220, 255, 0.85)';
+      (el as HTMLElement).style.borderColor = 'rgba(50, 100, 200, 0.2)';
     });
     
-    // Update background color
-    document.body.style.backgroundColor = '#f8fafc';
-    document.body.style.color = '#1e293b';
+    // Update background color with subtle blue tint
+    document.body.style.backgroundColor = '#eef2ff';
+    document.body.style.color = '#1e3a8a';
   };
 
   return (
@@ -78,7 +78,7 @@ export default function ThemeToggle() {
       {isDarkTheme ? (
         <i className="fas fa-sun text-yellow-300"></i>
       ) : (
-        <i className="fas fa-moon text-gray-700"></i>
+        <i className="fas fa-moon text-blue-800"></i>
       )}
     </button>
   );
