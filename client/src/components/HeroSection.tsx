@@ -23,7 +23,7 @@ export default function HeroSection() {
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               <span>Building the </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">decentralized </span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">decentralized </span>
               <span>future</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-xl">

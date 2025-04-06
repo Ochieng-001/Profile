@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -51,35 +52,42 @@ export default function Header() {
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <a href="#" className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-purple-600 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-blue-500 flex items-center justify-center">
               <span className="text-white font-bold text-lg">JD</span>
             </div>
             <span className="text-xl font-semibold tracking-tight">John Doe</span>
           </a>
           
-          {/* Mobile menu button */}
-          <button 
-            className="md:hidden text-gray-300 hover:text-white focus:outline-none"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle mobile menu"
-          >
-            <i className="fas fa-bars text-xl"></i>
-          </button>
-          
-          {/* Desktop navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <NavLink href="#home">Home</NavLink>
-            <NavLink href="#about">About</NavLink>
-            <NavLink href="#expertise">Expertise</NavLink>
-            <NavLink href="#projects">Projects</NavLink>
-            <NavLink href="#contact">Contact</NavLink>
-            <a 
-              href="#" 
-              className="px-4 py-2 rounded-lg bg-primary hover:bg-primary/80 text-white transition-colors duration-300"
+          <div className="flex items-center space-x-4">
+            {/* Theme Toggle */}
+            <div className="hidden md:block">
+              <ThemeToggle />
+            </div>
+            
+            {/* Mobile menu button */}
+            <button 
+              className="md:hidden text-gray-300 hover:text-white focus:outline-none"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle mobile menu"
             >
-              Resume
-            </a>
-          </nav>
+              <i className="fas fa-bars text-xl"></i>
+            </button>
+            
+            {/* Desktop navigation */}
+            <nav className="hidden md:flex items-center space-x-8">
+              <NavLink href="#home">Home</NavLink>
+              <NavLink href="#about">About</NavLink>
+              <NavLink href="#expertise">Expertise</NavLink>
+              <NavLink href="#projects">Projects</NavLink>
+              <NavLink href="#contact">Contact</NavLink>
+              <a 
+                href="#" 
+                className="px-4 py-2 rounded-lg bg-primary hover:bg-primary/80 text-white transition-colors duration-300"
+              >
+                Resume
+              </a>
+            </nav>
+          </div>
         </div>
       </div>
       
@@ -91,6 +99,12 @@ export default function Header() {
           <NavLink href="#expertise">Expertise</NavLink>
           <NavLink href="#projects">Projects</NavLink>
           <NavLink href="#contact">Contact</NavLink>
+          
+          <div className="flex items-center justify-between mt-2 pt-2 border-t border-gray-700">
+            <span className="text-sm text-gray-400">Toggle Theme</span>
+            <ThemeToggle />
+          </div>
+          
           <a 
             href="#" 
             className="px-4 py-2 rounded-lg bg-primary hover:bg-primary/80 text-white transition-colors duration-300 text-center"

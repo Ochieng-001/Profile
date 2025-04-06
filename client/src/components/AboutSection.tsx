@@ -6,7 +6,7 @@ export default function AboutSection() {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto mb-6"></div>
+          <div className="w-20 h-1 bg-gradient-to-r from-primary to-blue-500 mx-auto mb-6"></div>
           <p className="text-lg text-gray-300">
             Computer scientist with a passion for blockchain technology and Linux systems.
             I focus on building secure, distributed, and efficient network architectures.
