@@ -34,14 +34,14 @@ export function setupAnimations() {
   // Project card hover effects
   const projectCards = document.querySelectorAll('[data-project]');
   projectCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
+    card.addEventListener('mouseenter', function(this: Element) {
       const image = this.querySelector('img');
-      if (image) image.classList.add('scale-110');
+      if (image) (image as HTMLElement).classList.add('scale-110');
     });
     
-    card.addEventListener('mouseleave', function() {
+    card.addEventListener('mouseleave', function(this: Element) {
       const image = this.querySelector('img');
-      if (image) image.classList.remove('scale-110');
+      if (image) (image as HTMLElement).classList.remove('scale-110');
     });
   });
   
@@ -58,11 +58,11 @@ export function setupAnimations() {
   document.head.appendChild(googleFonts);
   
   // Set page title
-  document.title = 'John Doe | Blockchain & Linux Specialist';
+  document.title = 'Emperoh | Blockchain & Linux Specialist';
   
   // Add meta description for SEO
   const metaDescription = document.createElement('meta');
   metaDescription.name = 'description';
-  metaDescription.content = 'Professional portfolio of a computer scientist specializing in blockchain networking and Linux';
+  metaDescription.content = 'Professional portfolio of Emperoh, specializing in blockchain networking and Linux';
   document.head.appendChild(metaDescription);
 }

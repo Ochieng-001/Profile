@@ -53,9 +53,9 @@ export default function Header() {
         <div className="flex items-center justify-between">
           <a href="#" className="flex items-center space-x-2">
             <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-blue-500 flex items-center justify-center">
-              <span className="text-white font-bold text-lg">JD</span>
+              <i className="fas fa-crown text-yellow-300"></i>
             </div>
-            <span className="text-xl font-semibold tracking-tight">John Doe</span>
+            <span className="text-xl font-semibold tracking-tight">Emperoh</span>
           </a>
           
           <div className="flex items-center space-x-4">

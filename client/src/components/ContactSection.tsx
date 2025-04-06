@@ -60,7 +60,7 @@ export default function ContactSection() {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Get In Touch</h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-purple-600 mx-auto mb-6"></div>
+          <div className="w-20 h-1 bg-gradient-to-r from-primary to-blue-500 mx-auto mb-6"></div>
           <p className="text-lg text-gray-300">
             Feel free to reach out for collaborations, speaking engagements, or just to say hello!
           </p>
@@ -72,12 +72,12 @@ export default function ContactSection() {
               <i className="fas fa-envelope text-2xl text-primary"></i>
             </div>
             <h3 className="text-xl font-semibold mb-2">Email</h3>
-            <p className="text-gray-300">john.doe@example.com</p>
+            <p className="text-gray-300">emperoh@example.com</p>
           </GlassCard>
           
-          <GlassCard className="p-8 text-center hover:shadow-lg hover:shadow-purple-600/10 transition-all duration-500">
-            <div className="w-16 h-16 rounded-full bg-purple-600 bg-opacity-20 flex items-center justify-center mx-auto mb-6">
-              <i className="fas fa-map-marker-alt text-2xl text-purple-600"></i>
+          <GlassCard className="p-8 text-center hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-500">
+            <div className="w-16 h-16 rounded-full bg-blue-500 bg-opacity-20 flex items-center justify-center mx-auto mb-6">
+              <i className="fas fa-map-marker-alt text-2xl text-blue-500"></i>
             </div>
             <h3 className="text-xl font-semibold mb-2">Location</h3>
             <p className="text-gray-300">San Francisco, California</p>

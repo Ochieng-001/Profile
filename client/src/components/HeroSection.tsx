@@ -19,12 +19,15 @@ export default function HeroSection() {
         <div className="flex flex-col md:flex-row items-center justify-between">
           <div className="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
             <div className="inline-block px-6 py-2 rounded-full bg-primary bg-opacity-10 text-primary mb-4">
-              <span className="text-sm font-medium">Blockchain & Linux Specialist</span>
+              <span className="text-sm font-medium flex items-center">
+                <i className="fas fa-crown text-yellow-300 mr-2"></i>
+                Blockchain & Linux Specialist
+              </span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              <span>Building the </span>
+              <span>Emperoh of </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-500">decentralized </span>
-              <span>future</span>
+              <span>systems</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-xl">
               Computer Scientist specializing in blockchain networking, distributed systems, 
@@ -58,7 +61,7 @@ export default function HeroSection() {
                   </div>
                   <div ref={terminalRef} className="terminal-body text-sm hide-scrollbar overflow-auto h-full">
                     <p className="text-green-500">$ <span className="text-gray-300">whoami</span></p>
-                    <p className="text-gray-200 mb-2">john.doe</p>
+                    <p className="text-gray-200 mb-2">emperoh</p>
                     
                     <p className="text-green-500">$ <span className="text-gray-300">ls -l skills/</span></p>
                     <p className="text-gray-200">drwxr-xr-x blockchain</p>
