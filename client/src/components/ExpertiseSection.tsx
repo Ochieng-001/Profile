@@ -1,37 +1,7 @@
 import GlassCard from './GlassCard';
-import { useEffect, useRef } from 'react';
+import SkillBar from './SkillBar';
 
 export default function ExpertiseSection() {
-  const progressRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const target = entry.target as HTMLDivElement;
-          const width = target.getAttribute('data-width') || '0%';
-          target.style.width = width;
-        } else {
-          (entry.target as HTMLDivElement).style.width = '0%';
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    progressRefs.current.forEach(ref => {
-      if (ref) {
-        const width = ref.style.width;
-        ref.setAttribute('data-width', width);
-        ref.style.width = '0%';
-        observer.observe(ref);
-      }
-    });
-    
-    return () => {
-      progressRefs.current.forEach(ref => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, []);
 
   return (
     <section id="expertise" className="py-16 md:py-24 bg-black/30">
@@ -140,74 +110,114 @@ export default function ExpertiseSection() {
           <GlassCard className="p-8">
             <h3 className="text-2xl font-semibold mb-8 text-center">Technical Proficiency</h3>
             
-            <div className="space-y-6">
-              <div>
-                <div className="flex justify-between mb-2">
-                  <span className="text-gray-300">Blockchain Development</span>
-                  <span className="text-gray-400">95%</span>
-                </div>
-                <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-                  <div 
-                    ref={el => progressRefs.current[0] = el} 
-                    className="progress-value h-full bg-gradient-to-r from-primary to-primary/70 rounded-full" 
-                    style={{width: '95%'}}
-                  ></div>
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="space-y-2">
+                <SkillBar 
+                  name="Blockchain Development" 
+                  percentage={95} 
+                  color="primary" 
+                  delay={100}
+                  iconClass="fas fa-link"
+                />
+                
+                <SkillBar 
+                  name="Linux Systems Administration" 
+                  percentage={90} 
+                  color="purple" 
+                  delay={300}
+                  iconClass="fab fa-linux"
+                />
+                
+                <SkillBar 
+                  name="Network Architecture" 
+                  percentage={85} 
+                  color="blue" 
+                  delay={500}
+                  iconClass="fas fa-network-wired"
+                />
               </div>
               
-              <div>
-                <div className="flex justify-between mb-2">
-                  <span className="text-gray-300">Linux Systems Administration</span>
-                  <span className="text-gray-400">90%</span>
-                </div>
-                <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-                  <div 
-                    ref={el => progressRefs.current[1] = el} 
-                    className="progress-value h-full bg-gradient-to-r from-purple-600 to-purple-500 rounded-full" 
-                    style={{width: '90%'}}
-                  ></div>
-                </div>
+              <div className="space-y-2">
+                <SkillBar 
+                  name="Distributed Systems" 
+                  percentage={88} 
+                  color="green" 
+                  delay={200}
+                  iconClass="fas fa-server"
+                />
+                
+                <SkillBar 
+                  name="Security & Cryptography" 
+                  percentage={92} 
+                  color="red" 
+                  delay={400}
+                  iconClass="fas fa-shield-alt"
+                />
+                
+                <SkillBar 
+                  name="Smart Contract Development" 
+                  percentage={94} 
+                  color="amber" 
+                  delay={600}
+                  iconClass="fas fa-file-contract"
+                />
               </div>
+            </div>
+            
+            <div className="mt-10 pt-8 border-t border-gray-700/50">
+              <h4 className="text-xl font-semibold mb-6 text-center">Programming Languages</h4>
               
-              <div>
-                <div className="flex justify-between mb-2">
-                  <span className="text-gray-300">Network Architecture</span>
-                  <span className="text-gray-400">85%</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <SkillBar 
+                    name="Solidity" 
+                    percentage={96} 
+                    color="primary" 
+                    delay={150}
+                    iconClass="fab fa-ethereum"
+                  />
+                  
+                  <SkillBar 
+                    name="Python" 
+                    percentage={92} 
+                    color="blue" 
+                    delay={350}
+                    iconClass="fab fa-python"
+                  />
+                  
+                  <SkillBar 
+                    name="JavaScript/TypeScript" 
+                    percentage={89} 
+                    color="amber" 
+                    delay={550}
+                    iconClass="fab fa-js"
+                  />
                 </div>
-                <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-                  <div 
-                    ref={el => progressRefs.current[2] = el} 
-                    className="progress-value h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full" 
-                    style={{width: '85%'}}
-                  ></div>
-                </div>
-              </div>
-              
-              <div>
-                <div className="flex justify-between mb-2">
-                  <span className="text-gray-300">Distributed Systems</span>
-                  <span className="text-gray-400">88%</span>
-                </div>
-                <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-                  <div 
-                    ref={el => progressRefs.current[3] = el} 
-                    className="progress-value h-full bg-gradient-to-r from-green-500 to-green-400 rounded-full" 
-                    style={{width: '88%'}}
-                  ></div>
-                </div>
-              </div>
-              
-              <div>
-                <div className="flex justify-between mb-2">
-                  <span className="text-gray-300">Security & Cryptography</span>
-                  <span className="text-gray-400">92%</span>
-                </div>
-                <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-                  <div 
-                    ref={el => progressRefs.current[4] = el} 
-                    className="progress-value h-full bg-gradient-to-r from-red-500 to-red-400 rounded-full" 
-                    style={{width: '92%'}}
-                  ></div>
+                
+                <div className="space-y-2">
+                  <SkillBar 
+                    name="Go" 
+                    percentage={88} 
+                    color="green" 
+                    delay={250}
+                    iconClass="fas fa-code"
+                  />
+                  
+                  <SkillBar 
+                    name="Rust" 
+                    percentage={82} 
+                    color="red" 
+                    delay={450}
+                    iconClass="fas fa-cog"
+                  />
+                  
+                  <SkillBar 
+                    name="Shell Scripting" 
+                    percentage={94} 
+                    color="purple" 
+                    delay={650}
+                    iconClass="fas fa-terminal"
+                  />
                 </div>
               </div>
             </div>

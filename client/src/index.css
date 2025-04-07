@@ -132,3 +132,43 @@
     border-color: #0d9488;
   }
 }
+
+@keyframes particleMove {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    opacity: 0.2;
+    filter: blur(3px);
+  }
+  50% {
+    opacity: 0.5;
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 0.2;
+    filter: blur(3px);
+  }
+}
+
+@keyframes circuitFlow {
+  0% {
+    opacity: 0.3;
+    transform: translateX(-50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
