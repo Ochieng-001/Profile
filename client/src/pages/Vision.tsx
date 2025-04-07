@@ -115,12 +115,73 @@ export default function Vision() {
           
           {/* Mission */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-            <div className="flex items-center justify-center order-2 lg:order-1">
-              <img 
-                src="https://images.unsplash.com/photo-1496989981497-27d69cdad83e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" 
-                alt="Mission concept"
-                className="rounded-lg shadow-2xl max-h-96 object-cover animate-on-scroll"
-              />
+            <div className="flex flex-col items-center justify-center space-y-4 order-2 lg:order-1">
+              {/* Kenyan Flag */}
+              <div className="p-4 glass-subtle rounded-lg w-full max-w-md">
+                <div className="aspect-w-3 aspect-h-2 w-full overflow-hidden rounded-lg shadow-lg">
+                  <svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+                    {/* Black */}
+                    <rect width="900" height="600" fill="#000000" />
+                    
+                    {/* Red */}
+                    <rect width="900" height="180" y="60" fill="#bb0000" />
+                    
+                    {/* Green */}
+                    <rect width="900" height="180" y="360" fill="#006600" />
+                    
+                    {/* White Stripes */}
+                    <rect width="900" height="60" y="0" fill="#ffffff" />
+                    <rect width="900" height="60" y="240" fill="#ffffff" />
+                    <rect width="900" height="60" y="540" fill="#ffffff" />
+                    
+                    {/* Maasai Shield and Spears */}
+                    <g transform="translate(450,300) scale(2.5)">
+                      {/* Shield */}
+                      <path d="M0,-60 C-25,-55 -40,-30 -40,0 C-40,30 -25,55 0,60 C25,55 40,30 40,0 C40,-30 25,-55 0,-60 z" 
+                        fill="#bb0000"
+                        stroke="#ffffff"
+                        strokeWidth="2" />
+                      
+                      {/* Shield Patterns */}
+                      <path d="M0,-50 C-20,-45 -35,-25 -35,0 C-35,25 -20,45 0,50 C20,45 35,25 35,0 C35,-25 20,-45 0,-50 z" 
+                        fill="#000000"
+                        stroke="#ffffff"
+                        strokeWidth="1" />
+                        
+                      {/* Crossed Spears */}
+                      <line x1="-45" y1="-70" x2="45" y2="70" stroke="#ffffff" strokeWidth="3" />
+                      <line x1="45" y1="-70" x2="-45" y2="70" stroke="#ffffff" strokeWidth="3" />
+                      
+                      {/* Spear Tips */}
+                      <path d="M-45,-70 L-50,-80 L-40,-80 Z" fill="#ffffff" />
+                      <path d="M45,-70 L50,-80 L40,-80 Z" fill="#ffffff" />
+                    </g>
+                  </svg>
+                </div>
+                <div className="mt-4 text-center">
+                  <h4 className="font-semibold text-lg">Republic of Kenya</h4>
+                  <p className="text-sm text-gray-400">Harambee - "Let's pull together"</p>
+                </div>
+              </div>
+              
+              {/* Kenya Fast Facts */}
+              <div className="glass-subtle p-4 rounded-lg w-full max-w-md">
+                <h4 className="font-semibold mb-3 text-center">Kenya Fast Facts</h4>
+                <ul className="text-sm space-y-2 text-gray-300">
+                  <li className="flex items-start">
+                    <span className="inline-block w-4 h-4 rounded-full bg-green-600 mt-1 mr-2"></span>
+                    <span>Tech hub of East Africa with a growing blockchain community</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="inline-block w-4 h-4 rounded-full bg-red-600 mt-1 mr-2"></span>
+                    <span>Home to M-Pesa, a pioneering mobile payments platform</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="inline-block w-4 h-4 rounded-full bg-black mt-1 mr-2"></span>
+                    <span>Vibrant startup ecosystem in Nairobi's "Silicon Savannah"</span>
+                  </li>
+                </ul>
+              </div>
             </div>
             
             <GlassCard className="p-8 animate-on-scroll order-1 lg:order-2">
