@@ -348,3 +348,22 @@
 .timeline-item:nth-child(3) { transition-delay: 0.3s; }
 .timeline-item:nth-child(4) { transition-delay: 0.4s; }
 .timeline-item:nth-child(5) { transition-delay: 0.5s; }
+
+/* Glass Card Subtle Effect */
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-subtle:hover {
+  transform: translateY(-3px);
+  border-color: rgba(var(--primary-rgb), 0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.theme-light .glass-subtle {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}

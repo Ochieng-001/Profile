@@ -3,6 +3,7 @@ import { Link } from 'wouter';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import GlassCard from '../components/GlassCard';
+import SkillsRadarChart from '../components/SkillsRadarChart';
 
 export default function Resume() {
   const [isLightTheme, setIsLightTheme] = useState(false);
@@ -228,27 +229,82 @@ export default function Resume() {
                   <i className="fas fa-cogs mr-2 text-primary"></i>
                   SKILLS
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <h4 className="font-medium mb-2">Technical Skills</h4>
-                    <ul className="list-disc list-inside text-sm space-y-1">
-                      <li>Blockchain Development (Ethereum, Solidity)</li>
-                      <li>Linux Administration (Ubuntu, CentOS, RHEL)</li>
-                      <li>Network Security & Penetration Testing</li>
-                      <li>Distributed Systems Architecture</li>
-                      <li>Full-Stack Web Development</li>
+                
+                {/* Skills Radar Chart */}
+                <div className="mb-8 animate-on-scroll">
+                  <SkillsRadarChart 
+                    skills={[
+                      { name: 'Blockchain', value: 92, fullMark: 100 },
+                      { name: 'Linux Systems', value: 95, fullMark: 100 },
+                      { name: 'Cybersecurity', value: 88, fullMark: 100 },
+                      { name: 'Web Development', value: 82, fullMark: 100 },
+                      { name: 'Distributed Systems', value: 90, fullMark: 100 },
+                      { name: 'Cloud Infrastructure', value: 85, fullMark: 100 },
+                      { name: 'DevOps', value: 78, fullMark: 100 },
+                      { name: 'Smart Contracts', value: 91, fullMark: 100 },
+                    ]}
+                    className="mb-6"
+                  />
+                  <p className="text-center text-sm text-gray-400 italic">
+                    Hover over the radar chart to see exact proficiency levels
+                  </p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="glass-subtle p-5 rounded-lg">
+                    <h4 className="font-medium mb-3 flex items-center">
+                      <i className="fas fa-laptop-code text-primary mr-2"></i>
+                      Technical Expertise
+                    </h4>
+                    <ul className="list-disc pl-5 text-sm space-y-2">
+                      <li>Blockchain Development (Ethereum, Solidity, Smart Contracts)</li>
+                      <li>Linux Administration (Ubuntu, CentOS, RHEL, Security Hardening)</li>
+                      <li>Network Security & Penetration Testing (Vulnerability Assessment)</li>
+                      <li>Distributed Systems Architecture (Consensus Algorithms)</li>
+                      <li>Full-Stack Web Development (React, Node.js, API Design)</li>
+                      <li>Cloud Infrastructure (AWS, GCP, Terraform, Kubernetes)</li>
                     </ul>
                   </div>
-                  <div>
-                    <h4 className="font-medium mb-2">Programming Languages</h4>
-                    <ul className="list-disc list-inside text-sm space-y-1">
-                      <li>Solidity</li>
-                      <li>Python</li>
-                      <li>JavaScript/TypeScript</li>
-                      <li>Go</li>
-                      <li>Rust</li>
-                      <li>Shell Scripting</li>
-                    </ul>
+                  
+                  <div className="glass-subtle p-5 rounded-lg">
+                    <h4 className="font-medium mb-3 flex items-center">
+                      <i className="fas fa-code text-primary mr-2"></i>
+                      Programming Languages
+                    </h4>
+                    <div className="grid grid-cols-2 gap-2">
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-primary rounded-full mr-2"></div>
+                        <span className="text-sm">Solidity</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-primary rounded-full mr-2"></div>
+                        <span className="text-sm">Python</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-primary rounded-full mr-2"></div>
+                        <span className="text-sm">JavaScript</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-primary rounded-full mr-2"></div>
+                        <span className="text-sm">TypeScript</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-primary rounded-full mr-2"></div>
+                        <span className="text-sm">Go</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-primary rounded-full mr-2"></div>
+                        <span className="text-sm">Rust</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-primary rounded-full mr-2"></div>
+                        <span className="text-sm">Shell Scripting</span>
+                      </div>
+                      <div className="flex items-center">
+                        <div className="w-2 h-2 bg-primary rounded-full mr-2"></div>
+                        <span className="text-sm">C++</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
