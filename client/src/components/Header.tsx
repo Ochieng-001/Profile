@@ -1,130 +1,84 @@
 import { useState, useEffect } from "react";
-import { Link } from "wouter";
+import Sidebar from "./Sidebar";
 import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [currentSection, setCurrentSection] = useState("home");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isLightTheme, setIsLightTheme] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = document.querySelectorAll('section[id]');
-      let current = '';
-      
-      sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const sectionHeight = section.clientHeight;
-        
-        if (sectionTop <= window.innerHeight / 3 && sectionTop + sectionHeight > window.innerHeight / 3) {
-          current = section.getAttribute('id') || '';
+    // Check theme
+    setIsLightTheme(document.documentElement.classList.contains('theme-light'));
+    
+    // Listen for theme changes
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.attributeName === 'class') {
+          setIsLightTheme(document.documentElement.classList.contains('theme-light'));
         }
       });
-      
-      if (current) {
-        setCurrentSection(current);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    });
+    
+    observer.observe(document.documentElement, { attributes: true });
+    
+    return () => observer.disconnect();
   }, []);
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
-
-  const closeMobileMenu = () => {
-    setMobileMenuOpen(false);
-  };
-
-  const NavLink = ({ href, children }: { href: string, children: React.ReactNode }) => {
-    const isLight = document.documentElement.classList.contains('theme-light');
-    return (
-      <a 
-        href={href} 
-        className={`${
-          currentSection === href.substring(1) 
-            ? (isLight ? 'text-blue-800 font-medium' : 'text-white font-medium') 
-            : (isLight ? 'text-blue-600' : 'text-gray-300')
-        } hover:${isLight ? 'text-blue-900' : 'text-white'} transition-colors duration-300`}
-        onClick={closeMobileMenu}
-      >
-        {children}
-      </a>
-    );
-  };
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass-dark">
-      <div className="container mx-auto px-4 py-3">
-        <div className="flex items-center justify-between">
-          <a href="#" className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-blue-500 flex items-center justify-center shadow-md">
-              <i className="fas fa-crown text-yellow-300 text-lg"></i>
-            </div>
-            <span className="text-xl font-bold tracking-tight">Emperoh</span>
-          </a>
-          
-          <div className="flex items-center space-x-4">
-            {/* Theme Toggle */}
-            <div className="hidden md:block">
-              <ThemeToggle />
+    <>
+      {/* Sidebar */}
+      <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
+      
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-40 glass-dark lg:pl-64">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              {/* Sidebar toggle button */}
+              <button 
+                className="sidebar-toggle text-gray-300 hover:text-white mr-4 lg:hidden focus:outline-none"
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+                aria-label="Toggle sidebar"
+              >
+                <i className="fas fa-bars text-xl"></i>
+              </button>
+              
+              {/* Logo - only visible on mobile */}
+              <a href="/" className="flex items-center space-x-2 lg:hidden">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-blue-500 flex items-center justify-center shadow-md">
+                  <i className="fas fa-crown text-yellow-300 text-sm"></i>
+                </div>
+                <span className="text-lg font-bold tracking-tight">Emperoh</span>
+              </a>
             </div>
             
-            {/* Mobile menu button */}
-            <button 
-              className="md:hidden text-gray-300 hover:text-white focus:outline-none"
-              onClick={toggleMobileMenu}
-              aria-label="Toggle mobile menu"
-            >
-              <i className="fas fa-bars text-xl"></i>
-            </button>
-            
-            {/* Desktop navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
-              <NavLink href="/">Home</NavLink>
-              <NavLink href="/#about">About</NavLink>
-              <NavLink href="/#expertise">Expertise</NavLink>
-              <NavLink href="/#projects">Projects</NavLink>
-              <NavLink href="/vision-mission">Vision & Mission</NavLink>
-              <NavLink href="/gallery">Gallery</NavLink>
-              <NavLink href="/blockchain-facts">Blockchain Facts</NavLink>
+            {/* Right side: Contact button and theme toggle */}
+            <div className="flex items-center space-x-4">
+              <a 
+                href="/#contact" 
+                className={`hidden sm:flex items-center space-x-2 px-3 py-1 rounded-lg ${
+                  isLightTheme ? 'text-blue-700 hover:text-blue-900' : 'text-gray-300 hover:text-white'
+                }`}
+              >
+                <i className="fas fa-envelope"></i>
+                <span>Contact</span>
+              </a>
+              
               <a 
                 href="/resume" 
-                className="px-4 py-2 rounded-lg bg-primary hover:bg-primary/80 text-white transition-colors duration-300"
+                className="px-4 py-2 rounded-lg bg-primary hover:bg-primary/80 text-white transition-colors duration-300 shadow-md"
               >
-                Resume
+                <i className="fas fa-file-alt mr-2"></i>
+                <span className="hidden sm:inline">Resume</span>
               </a>
-            </nav>
+              
+              <div className="block">
+                <ThemeToggle />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      
-      {/* Mobile menu */}
-      <div className={`md:hidden glass-dark py-4 px-4 border-t border-gray-800 ${mobileMenuOpen ? 'block' : 'hidden'}`}>
-        <nav className="flex flex-col space-y-4">
-          <NavLink href="/">Home</NavLink>
-          <NavLink href="/#about">About</NavLink>
-          <NavLink href="/#expertise">Expertise</NavLink>
-          <NavLink href="/#projects">Projects</NavLink>
-          <NavLink href="/vision-mission">Vision & Mission</NavLink>
-          <NavLink href="/gallery">Gallery</NavLink>
-          <NavLink href="/blockchain-facts">Blockchain Facts</NavLink>
-          
-          <div className="flex items-center justify-between mt-2 pt-2 border-t border-gray-700">
-            <span className="text-sm text-gray-400">Toggle Theme</span>
-            <ThemeToggle />
-          </div>
-          
-          <a 
-            href="/resume" 
-            className="px-4 py-2 rounded-lg bg-primary hover:bg-primary/80 text-white transition-colors duration-300 text-center"
-            onClick={closeMobileMenu}
-          >
-            Resume
-          </a>
-        </nav>
-      </div>
-    </header>
+      </header>
+    </>
   );
 }

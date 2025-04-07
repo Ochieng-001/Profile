@@ -24,12 +24,15 @@ export default function Home() {
       </div>
       
       <Header />
-      <HeroSection />
-      <AboutSection />
-      <ExpertiseSection />
-      <ProjectsSection />
-      <ContactSection />
-      <Footer />
+      
+      <div className="lg:pl-64">
+        <HeroSection />
+        <AboutSection />
+        <ExpertiseSection />
+        <ProjectsSection />
+        <ContactSection />
+        <Footer />
+      </div>
     </div>
   );
 }

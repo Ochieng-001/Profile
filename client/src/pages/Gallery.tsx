@@ -149,15 +149,16 @@ export default function Gallery() {
     <div className="min-h-screen flex flex-col animated-bg">
       <Header />
       
-      <main className="flex-grow pt-24 pb-16">
+      <main className="flex-grow pt-24 pb-16 lg:pl-64">
         <div className="container mx-auto px-4">
           <div className="flex items-center mb-8">
-            <Link href="/">
-              <a className={`flex items-center space-x-2 ${isLightTheme ? 'text-blue-700' : 'text-gray-300'} hover:text-primary transition-colors`}>
-                <i className="fas fa-arrow-left"></i>
-                <span>Back to Home</span>
-              </a>
-            </Link>
+            <a 
+              href="/" 
+              className={`flex items-center space-x-2 ${isLightTheme ? 'text-blue-700' : 'text-gray-300'} hover:text-primary transition-colors`}
+            >
+              <i className="fas fa-arrow-left"></i>
+              <span>Back to Home</span>
+            </a>
           </div>
           
           {/* Hero Section */}
@@ -349,7 +350,7 @@ export default function Gallery() {
         </div>
       )}
       
-      <Footer />
+      <Footer className="lg:pl-64" />
     </div>
   );
 }

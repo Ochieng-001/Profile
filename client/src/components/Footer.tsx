@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 
-export default function Footer() {
+interface FooterProps {
+  className?: string;
+}
+
+export default function Footer({ className = '' }: FooterProps) {
   const [isLightTheme, setIsLightTheme] = useState(false);
   
   useEffect(() => {
@@ -22,7 +26,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className={`py-8 border-t ${isLightTheme ? 'border-blue-200' : 'border-gray-800'}`}>
+    <footer className={`py-8 border-t ${isLightTheme ? 'border-blue-200' : 'border-gray-800'} ${className}`}>
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
