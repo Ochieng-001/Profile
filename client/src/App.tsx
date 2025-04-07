@@ -8,6 +8,7 @@ import Resume from "./pages/Resume";
 import Vision from "./pages/Vision";
 import Gallery from "./pages/Gallery";
 import BlockchainFacts from "./pages/BlockchainFacts";
+import CodeExamples from "./pages/CodeExamples";
 import { useEffect } from "react";
 
 function Router() {
@@ -18,6 +19,7 @@ function Router() {
       <Route path="/vision-mission" component={Vision} />
       <Route path="/gallery" component={Gallery} />
       <Route path="/blockchain-facts" component={BlockchainFacts} />
+      <Route path="/code-examples" component={CodeExamples} />
       <Route component={NotFound} />
     </Switch>
   );

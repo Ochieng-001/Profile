@@ -170,3 +170,40 @@
     transform: translateX(100%);
   }
 }
+
+/* Code Playground syntax highlighting */
+.code-playground-input {
+  color: #e0e0e0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  line-height: 1.5;
+}
+
+.code-playground-input .keyword {
+  color: #ff79c6;
+  font-weight: bold;
+}
+
+.code-playground-input .string {
+  color: #f1fa8c;
+}
+
+.code-playground-input .number {
+  color: #bd93f9;
+}
+
+.code-playground-input .function {
+  color: #50fa7b;
+}
+
+.code-playground-input .comment {
+  color: #6272a4;
+  font-style: italic;
+}
+
+.code-playground-input .property {
+  color: #8be9fd;
+}
+
+.terminal-output {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}

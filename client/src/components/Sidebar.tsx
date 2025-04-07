@@ -206,6 +206,18 @@ export default function Sidebar({ isOpen, setIsOpen }: SidebarProps) {
                 <i className="fas fa-cubes w-5 mr-3"></i>
                 <span>Blockchain Facts</span>
               </a>
+              
+              <a 
+                href="/code-examples" 
+                className={`flex items-center px-3 py-2 rounded-lg text-sm transition-colors ${
+                  isActive('/code-examples')
+                    ? 'bg-primary text-white' 
+                    : 'hover:bg-primary/10'
+                }`}
+              >
+                <i className="fas fa-code w-5 mr-3"></i>
+                <span>Code Examples</span>
+              </a>
             </div>
           </nav>
           

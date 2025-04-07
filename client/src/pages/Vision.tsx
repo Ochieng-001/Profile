@@ -119,44 +119,11 @@ export default function Vision() {
               {/* Kenyan Flag */}
               <div className="p-4 glass-subtle rounded-lg w-full max-w-md">
                 <div className="aspect-w-3 aspect-h-2 w-full overflow-hidden rounded-lg shadow-lg">
-                  <svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
-                    {/* Black */}
-                    <rect width="900" height="600" fill="#000000" />
-                    
-                    {/* Red */}
-                    <rect width="900" height="180" y="60" fill="#bb0000" />
-                    
-                    {/* Green */}
-                    <rect width="900" height="180" y="360" fill="#006600" />
-                    
-                    {/* White Stripes */}
-                    <rect width="900" height="60" y="0" fill="#ffffff" />
-                    <rect width="900" height="60" y="240" fill="#ffffff" />
-                    <rect width="900" height="60" y="540" fill="#ffffff" />
-                    
-                    {/* Maasai Shield and Spears */}
-                    <g transform="translate(450,300) scale(2.5)">
-                      {/* Shield */}
-                      <path d="M0,-60 C-25,-55 -40,-30 -40,0 C-40,30 -25,55 0,60 C25,55 40,30 40,0 C40,-30 25,-55 0,-60 z" 
-                        fill="#bb0000"
-                        stroke="#ffffff"
-                        strokeWidth="2" />
-                      
-                      {/* Shield Patterns */}
-                      <path d="M0,-50 C-20,-45 -35,-25 -35,0 C-35,25 -20,45 0,50 C20,45 35,25 35,0 C35,-25 20,-45 0,-50 z" 
-                        fill="#000000"
-                        stroke="#ffffff"
-                        strokeWidth="1" />
-                        
-                      {/* Crossed Spears */}
-                      <line x1="-45" y1="-70" x2="45" y2="70" stroke="#ffffff" strokeWidth="3" />
-                      <line x1="45" y1="-70" x2="-45" y2="70" stroke="#ffffff" strokeWidth="3" />
-                      
-                      {/* Spear Tips */}
-                      <path d="M-45,-70 L-50,-80 L-40,-80 Z" fill="#ffffff" />
-                      <path d="M45,-70 L50,-80 L40,-80 Z" fill="#ffffff" />
-                    </g>
-                  </svg>
+                  <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Flag_of_Kenya.svg/1200px-Flag_of_Kenya.svg.png" 
+                    alt="Kenyan Flag"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="mt-4 text-center">
                   <h4 className="font-semibold text-lg">Republic of Kenya</h4>
