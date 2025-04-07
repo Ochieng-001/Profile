@@ -156,10 +156,16 @@ export default function CodePlayground({
       );
     }
     
-    // Replace newlines with <br> for HTML display
-    formatted = formatted.replace(/\n/g, '<br>');
+    // Add line numbers
+    const lines = formatted.split('\n');
+    let lineNumberedCode = '';
     
-    setFormattedCode(formatted);
+    lines.forEach((line, index) => {
+      const lineNumber = index + 1;
+      lineNumberedCode += `<div class="code-line"><span class="line-number">${lineNumber}</span>${line}</div>`;
+    });
+    
+    setFormattedCode(lineNumberedCode);
   };
   
   const handleCodeChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -229,71 +235,92 @@ export default function CodePlayground({
   
   return (
     <GlassCard className={`overflow-hidden flex flex-col shadow-lg border ${isLightTheme ? 'border-gray-300' : 'border-gray-700'} ${className}`}>
-      {/* Editor Header */}
-      <div className={`flex items-center justify-between p-3 ${isLightTheme ? 'bg-gray-200/70' : 'bg-gray-800/70'} border-b ${isLightTheme ? 'border-gray-300' : 'border-gray-700'}`}>
-        <div className="flex items-center">
-          <div className="flex space-x-2 mr-4">
-            <span className="w-3 h-3 rounded-full bg-red-500"></span>
-            <span className="w-3 h-3 rounded-full bg-yellow-500"></span>
-            <span className="w-3 h-3 rounded-full bg-green-500"></span>
+      {/* Editor Header - Linux style */}
+      <div className={`flex items-center justify-between p-2 ${isLightTheme ? 'bg-gray-200' : 'bg-gray-800'} border-b ${isLightTheme ? 'border-gray-300' : 'border-gray-700'}`}>
+        <div className="flex items-center flex-1">
+          <div className="px-2 py-1 bg-gray-700 rounded-t text-xs text-white font-semibold mr-1">
+            {title}
           </div>
-          <span className="text-sm font-medium">{title}</span>
+          <div className="px-2 py-1 text-xs text-gray-400">
+            {language === 'javascript' ? 'script.js' : language === 'python' ? 'main.py' : 'Contract.sol'}
+          </div>
         </div>
-        <div className="flex items-center space-x-2">
-          <span className={`text-xs ${isLightTheme ? 'text-gray-600' : 'text-gray-400'}`}>
+        <div className="flex items-center space-x-1">
+          <span className={`text-xs px-2 py-1 rounded ${isLightTheme ? 'bg-gray-300 text-gray-700' : 'bg-gray-700 text-gray-300'}`}>
             {language.toUpperCase()}
+          </span>
+          <span className={`text-xs px-2 py-1 ${isLightTheme ? 'text-gray-600' : 'text-gray-400'}`}>
+            <i className="fas fa-code"></i>
           </span>
         </div>
       </div>
       
       {/* Code Editor */}
-      <div className="flex flex-1 relative">
-        {/* Hidden textarea for editing */}
+      <div className="flex flex-1 relative overflow-hidden">
+        {/* Syntax highlighted display only */}
+        <div 
+          className={`w-full h-full overflow-auto font-mono text-sm p-4 ${isLightTheme ? 'bg-gray-50 text-gray-800' : 'bg-gray-900 text-gray-100'} code-playground-input`}
+          dangerouslySetInnerHTML={{ __html: formattedCode }}
+        ></div>
+        
+        {/* Hidden textarea for editing on top */}
         <textarea
           ref={textareaRef}
           value={code}
           onChange={handleCodeChange}
           onKeyDown={handleKeyDown}
           disabled={readOnly}
-          className={`absolute inset-0 font-mono text-sm p-4 resize-none ${isLightTheme ? 'bg-gray-100/50' : 'bg-gray-900/50'} w-full h-full z-10 ${readOnly ? 'opacity-0 cursor-not-allowed' : 'opacity-20'}`}
+          className={`absolute inset-0 font-mono text-sm p-4 resize-none opacity-0 w-full h-full z-10 ${readOnly ? 'cursor-not-allowed' : 'cursor-text'}`}
           spellCheck="false"
         />
-        
-        {/* Syntax highlighted display */}
-        <div 
-          className={`w-full h-full overflow-auto font-mono text-sm p-4 ${isLightTheme ? 'bg-white text-gray-800' : 'bg-gray-900 text-gray-100'} code-playground-input`}
-          dangerouslySetInnerHTML={{ __html: formattedCode }}
-        ></div>
       </div>
       
-      {/* Control Panel and Output */}
-      <div className={`p-3 ${isLightTheme ? 'bg-gray-200/70' : 'bg-gray-700/70'} border-t ${isLightTheme ? 'border-gray-300' : 'border-gray-700'} flex flex-col`}>
-        <div className="flex justify-between items-center mb-2">
-          <span className={`text-xs ${isLightTheme ? 'text-gray-600' : 'text-gray-300'}`}>
-            {readOnly ? 'Read-only mode' : 'Edit mode'}
-          </span>
+      {/* Control Panel and Output - Linux style */}
+      <div className={`border-t ${isLightTheme ? 'border-gray-300' : 'border-gray-700'} flex flex-col`}>
+        {/* Tab-like buttons */}
+        <div className={`flex ${isLightTheme ? 'bg-gray-200' : 'bg-gray-800'}`}>
+          <div className={`px-3 py-2 text-xs font-medium border-r ${isLightTheme ? 'border-gray-300 text-gray-700' : 'border-gray-700 text-white'}`}>
+            <i className="fas fa-terminal mr-2"></i>Terminal
+          </div>
+          <div className={`px-3 py-2 text-xs font-medium border-r ${isLightTheme ? 'border-gray-300 text-gray-700' : 'border-gray-700 text-white'}`}>
+            <i className="fas fa-bug mr-2"></i>Debug
+          </div>
+          <div className="flex-1"></div>
           <button
             onClick={runCode}
             disabled={isRunning || readOnly}
-            className={`px-3 py-1 text-sm rounded-md transition-colors ${
+            className={`px-4 py-2 text-xs font-medium transition-colors ${
               isRunning
-                ? 'bg-gray-500 cursor-not-allowed'
+                ? 'bg-gray-500 cursor-not-allowed text-white'
                 : readOnly
-                  ? 'bg-gray-500 cursor-not-allowed'
+                  ? 'bg-gray-500 cursor-not-allowed text-white'
                   : isLightTheme
-                    ? 'bg-primary hover:bg-primary/90 text-white'
-                    : 'bg-primary hover:bg-primary/90 text-white'
+                    ? 'bg-green-700 hover:bg-green-800 text-white'
+                    : 'bg-green-700 hover:bg-green-800 text-white'
             }`}
           >
+            <i className="fas fa-play mr-1"></i>
             {isRunning ? 'Running...' : 'Run Code'}
           </button>
         </div>
         
-        {output && (
-          <div className={`mt-2 p-3 rounded-md ${isLightTheme ? 'bg-gray-300/70 text-gray-800' : 'bg-black/80 text-green-400'} text-xs h-24 overflow-auto terminal-output`}>
-            <pre>{output}</pre>
-          </div>
-        )}
+        {/* Output console */}
+        <div className={`p-3 ${isLightTheme ? 'bg-gray-100' : 'bg-black'}`}>
+          {output ? (
+            <div className={`p-2 text-xs h-24 overflow-auto terminal-output ${isLightTheme ? 'text-gray-800' : 'text-green-400'}`}>
+              <div className="mb-2 text-xs text-gray-500">
+                <i className="fas fa-chevron-right mr-1"></i>
+                Execution output:
+              </div>
+              <pre>{output}</pre>
+            </div>
+          ) : (
+            <div className={`p-2 text-xs ${isLightTheme ? 'text-gray-600' : 'text-gray-400'}`}>
+              <i className="fas fa-info-circle mr-1"></i>
+              {readOnly ? 'Read-only mode. Run disabled.' : 'Click Run Code to execute and see output here.'}
+            </div>
+          )}
+        </div>
       </div>
     </GlassCard>
   );

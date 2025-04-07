@@ -242,3 +242,20 @@
 .terminal-output {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+
+/* Line numbers */
+.code-line {
+  display: flex;
+  white-space: pre;
+}
+
+.line-number {
+  display: inline-block;
+  width: 2rem;
+  text-align: right;
+  padding-right: 0.5rem;
+  margin-right: 0.5rem;
+  user-select: none;
+  opacity: 0.5;
+  border-right: 1px solid rgba(127, 127, 127, 0.5);
+}
