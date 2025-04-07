@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'wouter';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -6,6 +6,7 @@ import GlassCard from '../components/GlassCard';
 
 export default function Resume() {
   const [isLightTheme, setIsLightTheme] = useState(false);
+  const timelineRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
     // Initialize animations
@@ -20,11 +21,30 @@ export default function Resume() {
       });
     };
     
+    // Set up timeline animation on scroll
+    const handleTimelineAnimation = () => {
+      if (timelineRef.current) {
+        const timelineItems = timelineRef.current.querySelectorAll('.timeline-item');
+        
+        timelineItems.forEach((item: Element) => {
+          const rect = item.getBoundingClientRect();
+          const isVisible = rect.top < window.innerHeight - 100;
+          
+          if (isVisible) {
+            item.classList.add('timeline-item-visible');
+          }
+        });
+      }
+    };
+    
     // Run once on load
     animateOnScroll();
     
-    // Add scroll event listener
+    // Add scroll event listener for general animations
     window.addEventListener('scroll', animateOnScroll);
+    
+    // Add scroll event listener for timeline
+    window.addEventListener('scroll', handleTimelineAnimation);
     
     // Check theme
     setIsLightTheme(document.documentElement.classList.contains('theme-light'));
@@ -40,8 +60,15 @@ export default function Resume() {
     
     observer.observe(document.documentElement, { attributes: true });
     
+    // Trigger once on mount to check initial visible items
+    setTimeout(() => {
+      animateOnScroll();
+      handleTimelineAnimation();
+    }, 300);
+    
     return () => {
       window.removeEventListener('scroll', animateOnScroll);
+      window.removeEventListener('scroll', handleTimelineAnimation);
       observer.disconnect();
     };
   }, []);
@@ -124,29 +151,75 @@ export default function Resume() {
                   <i className="fas fa-briefcase mr-2 text-primary"></i>
                   EXPERIENCE
                 </h3>
-                <div className="mb-4">
-                  <div className="flex justify-between">
-                    <h4 className="font-medium">Blockchain Developer</h4>
-                    <span className="text-sm">2022 - Present</span>
+                
+                {/* Interactive Timeline */}
+                <div className="timeline-container" ref={timelineRef}>
+                  <div className="timeline-line"></div>
+                  
+                  <div className="timeline-item">
+                    <div className="timeline-dot">
+                      <i className="fas fa-briefcase"></i>
+                    </div>
+                    <div className="timeline-date">
+                      <span>2022 - Present</span>
+                    </div>
+                    <div className="timeline-content">
+                      <h3 className="text-xl font-semibold">Blockchain Developer</h3>
+                      <p className="text-primary mb-2">Distributed Ledger Technologies</p>
+                      <div className="timeline-card">
+                        <ul className="list-disc pl-5 space-y-2 text-sm">
+                          <li>Developed smart contracts for decentralized finance applications</li>
+                          <li>Optimized blockchain consensus mechanisms for improved throughput</li>
+                          <li>Implemented secure cryptographic protocols for distributed systems</li>
+                          <li>Led a team of 5 developers on a cross-chain interoperability project</li>
+                          <li>Conducted security audits for blockchain implementations</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                  <p className="italic">Distributed Ledger Technologies</p>
-                  <ul className="list-disc list-inside text-sm mt-1 space-y-1">
-                    <li>Developed smart contracts for decentralized finance applications</li>
-                    <li>Optimized blockchain consensus mechanisms for improved throughput</li>
-                    <li>Implemented secure cryptographic protocols for distributed systems</li>
-                  </ul>
-                </div>
-                <div>
-                  <div className="flex justify-between">
-                    <h4 className="font-medium">Linux Systems Administrator</h4>
-                    <span className="text-sm">2020 - 2022</span>
+                  
+                  <div className="timeline-item">
+                    <div className="timeline-dot">
+                      <i className="fas fa-server"></i>
+                    </div>
+                    <div className="timeline-date">
+                      <span>2020 - 2022</span>
+                    </div>
+                    <div className="timeline-content">
+                      <h3 className="text-xl font-semibold">Linux Systems Administrator</h3>
+                      <p className="text-primary mb-2">Network Solutions Kenya</p>
+                      <div className="timeline-card">
+                        <ul className="list-disc pl-5 space-y-2 text-sm">
+                          <li>Managed enterprise-level Linux server infrastructure</li>
+                          <li>Implemented security hardening measures across network systems</li>
+                          <li>Automated deployment processes using containerization technologies</li>
+                          <li>Reduced system downtime by 45% through proactive monitoring solutions</li>
+                          <li>Migrated legacy systems to modern cloud infrastructure</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                  <p className="italic">Network Solutions Kenya</p>
-                  <ul className="list-disc list-inside text-sm mt-1 space-y-1">
-                    <li>Managed enterprise-level Linux server infrastructure</li>
-                    <li>Implemented security hardening measures across network systems</li>
-                    <li>Automated deployment processes using containerization technologies</li>
-                  </ul>
+                  
+                  <div className="timeline-item">
+                    <div className="timeline-dot">
+                      <i className="fas fa-laptop-code"></i>
+                    </div>
+                    <div className="timeline-date">
+                      <span>2018 - 2020</span>
+                    </div>
+                    <div className="timeline-content">
+                      <h3 className="text-xl font-semibold">Junior Web Developer</h3>
+                      <p className="text-primary mb-2">InnoTech Solutions</p>
+                      <div className="timeline-card">
+                        <ul className="list-disc pl-5 space-y-2 text-sm">
+                          <li>Designed and implemented responsive web applications</li>
+                          <li>Created RESTful APIs for mobile application backends</li>
+                          <li>Optimized database queries for high-traffic web services</li>
+                          <li>Contributed to open-source projects in the local developer community</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               
