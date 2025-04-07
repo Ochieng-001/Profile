@@ -1,6 +1,7 @@
 import GlassCard from './GlassCard';
 import BlockchainNetwork from './BlockchainNetwork';
 import WorldMap from './WorldMap';
+import CryptoPrices from './CryptoPrices';
 
 export default function NetworkMapSection() {
   return (
@@ -12,6 +13,12 @@ export default function NetworkMapSection() {
           <p className="text-lg text-gray-300">
             Visualizing blockchain interconnections and global presence
           </p>
+        </div>
+        
+        {/* Live Cryptocurrency Prices */}
+        <div className="mb-12">
+          <h3 className="text-xl font-semibold mb-4 text-center">Live Cryptocurrency Prices</h3>
+          <CryptoPrices />
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
