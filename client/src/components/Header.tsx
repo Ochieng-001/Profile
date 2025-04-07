@@ -82,13 +82,15 @@ export default function Header() {
             
             {/* Desktop navigation */}
             <nav className="hidden md:flex items-center space-x-8">
-              <NavLink href="#home">Home</NavLink>
-              <NavLink href="#about">About</NavLink>
-              <NavLink href="#expertise">Expertise</NavLink>
-              <NavLink href="#projects">Projects</NavLink>
-              <NavLink href="#contact">Contact</NavLink>
+              <NavLink href="/">Home</NavLink>
+              <NavLink href="/#about">About</NavLink>
+              <NavLink href="/#expertise">Expertise</NavLink>
+              <NavLink href="/#projects">Projects</NavLink>
+              <NavLink href="/vision-mission">Vision & Mission</NavLink>
+              <NavLink href="/gallery">Gallery</NavLink>
+              <NavLink href="/blockchain-facts">Blockchain Facts</NavLink>
               <a 
-                href="#" 
+                href="/resume" 
                 className="px-4 py-2 rounded-lg bg-primary hover:bg-primary/80 text-white transition-colors duration-300"
               >
                 Resume
@@ -101,11 +103,13 @@ export default function Header() {
       {/* Mobile menu */}
       <div className={`md:hidden glass-dark py-4 px-4 border-t border-gray-800 ${mobileMenuOpen ? 'block' : 'hidden'}`}>
         <nav className="flex flex-col space-y-4">
-          <NavLink href="#home">Home</NavLink>
-          <NavLink href="#about">About</NavLink>
-          <NavLink href="#expertise">Expertise</NavLink>
-          <NavLink href="#projects">Projects</NavLink>
-          <NavLink href="#contact">Contact</NavLink>
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="/#about">About</NavLink>
+          <NavLink href="/#expertise">Expertise</NavLink>
+          <NavLink href="/#projects">Projects</NavLink>
+          <NavLink href="/vision-mission">Vision & Mission</NavLink>
+          <NavLink href="/gallery">Gallery</NavLink>
+          <NavLink href="/blockchain-facts">Blockchain Facts</NavLink>
           
           <div className="flex items-center justify-between mt-2 pt-2 border-t border-gray-700">
             <span className="text-sm text-gray-400">Toggle Theme</span>
@@ -113,7 +117,7 @@ export default function Header() {
           </div>
           
           <a 
-            href="#" 
+            href="/resume" 
             className="px-4 py-2 rounded-lg bg-primary hover:bg-primary/80 text-white transition-colors duration-300 text-center"
             onClick={closeMobileMenu}
           >

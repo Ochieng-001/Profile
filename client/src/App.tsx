@@ -4,12 +4,20 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
+import Resume from "./pages/Resume";
+import Vision from "./pages/Vision";
+import Gallery from "./pages/Gallery";
+import BlockchainFacts from "./pages/BlockchainFacts";
 import { useEffect } from "react";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/resume" component={Resume} />
+      <Route path="/vision-mission" component={Vision} />
+      <Route path="/gallery" component={Gallery} />
+      <Route path="/blockchain-facts" component={BlockchainFacts} />
       <Route component={NotFound} />
     </Switch>
   );
