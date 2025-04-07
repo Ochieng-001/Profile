@@ -236,9 +236,18 @@ export default function Vision() {
                 </div>
               </div>
               
-              <div className="space-y-4">
+              <div className="space-y-6">
+                {/* Nairobi Skyline Image */}
+                <div>
+                  <img 
+                    src="https://images.unsplash.com/photo-1611348524140-53c9a25263d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" 
+                    alt="Nairobi skyline"
+                    className="rounded-lg shadow-xl max-h-80 w-full object-cover"
+                  />
+                </div>
+                
                 {/* Nairobi Map Iframe */}
-                <div className="rounded-lg overflow-hidden shadow-xl w-full h-80 glass">
+                <div className="rounded-lg overflow-hidden shadow-xl w-full h-64 glass">
                   <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255281.19039436432!2d36.75933083683293!3d-1.3028617927589906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1679322978854!5m2!1sen!2sus" 
                     width="100%" 
@@ -249,15 +258,6 @@ export default function Vision() {
                     referrerPolicy="no-referrer-when-downgrade"
                     title="Nairobi Map"
                     className="w-full h-full"
-                  />
-                </div>
-                
-                {/* Nairobi Skyline Image */}
-                <div className="hidden md:block">
-                  <img 
-                    src="https://images.unsplash.com/photo-1611348524140-53c9a25263d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" 
-                    alt="Nairobi skyline"
-                    className="rounded-lg shadow-xl max-h-40 w-full object-cover"
                   />
                 </div>
               </div>
