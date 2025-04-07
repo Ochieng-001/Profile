@@ -228,7 +228,7 @@ export default function CodePlayground({
   };
   
   return (
-    <GlassCard className={`overflow-hidden flex flex-col ${className}`}>
+    <GlassCard className={`overflow-hidden flex flex-col shadow-lg border ${isLightTheme ? 'border-gray-300' : 'border-gray-700'} ${className}`}>
       {/* Editor Header */}
       <div className={`flex items-center justify-between p-3 ${isLightTheme ? 'bg-gray-200/70' : 'bg-gray-800/70'} border-b ${isLightTheme ? 'border-gray-300' : 'border-gray-700'}`}>
         <div className="flex items-center">
@@ -255,13 +255,13 @@ export default function CodePlayground({
           onChange={handleCodeChange}
           onKeyDown={handleKeyDown}
           disabled={readOnly}
-          className={`absolute inset-0 font-mono text-sm p-4 resize-none ${isLightTheme ? 'bg-gray-100/50' : 'bg-gray-900/50'} w-full h-full z-10 ${readOnly ? 'opacity-0 cursor-not-allowed' : 'opacity-40'}`}
+          className={`absolute inset-0 font-mono text-sm p-4 resize-none ${isLightTheme ? 'bg-gray-100/50' : 'bg-gray-900/50'} w-full h-full z-10 ${readOnly ? 'opacity-0 cursor-not-allowed' : 'opacity-20'}`}
           spellCheck="false"
         />
         
         {/* Syntax highlighted display */}
         <div 
-          className={`w-full h-full overflow-auto font-mono text-sm p-4 ${isLightTheme ? 'bg-gray-100/50' : 'bg-gray-900/50'} code-playground-input`}
+          className={`w-full h-full overflow-auto font-mono text-sm p-4 ${isLightTheme ? 'bg-white text-gray-800' : 'bg-gray-900 text-gray-100'} code-playground-input`}
           dangerouslySetInnerHTML={{ __html: formattedCode }}
         ></div>
       </div>

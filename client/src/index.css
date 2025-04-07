@@ -173,35 +173,70 @@
 
 /* Code Playground syntax highlighting */
 .code-playground-input {
-  color: #e0e0e0;
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   line-height: 1.5;
 }
 
-.code-playground-input .keyword {
+.theme-dark .code-playground-input {
+  color: #f8f8f2;
+}
+
+.theme-light .code-playground-input {
+  color: #282a36;
+}
+
+/* Dark theme syntax highlighting */
+.theme-dark .code-playground-input .keyword {
   color: #ff79c6;
   font-weight: bold;
 }
 
-.code-playground-input .string {
+.theme-dark .code-playground-input .string {
   color: #f1fa8c;
 }
 
-.code-playground-input .number {
+.theme-dark .code-playground-input .number {
   color: #bd93f9;
 }
 
-.code-playground-input .function {
+.theme-dark .code-playground-input .function {
   color: #50fa7b;
 }
 
-.code-playground-input .comment {
+.theme-dark .code-playground-input .comment {
   color: #6272a4;
   font-style: italic;
 }
 
-.code-playground-input .property {
+.theme-dark .code-playground-input .property {
   color: #8be9fd;
+}
+
+/* Light theme syntax highlighting */
+.theme-light .code-playground-input .keyword {
+  color: #d73a49;
+  font-weight: bold;
+}
+
+.theme-light .code-playground-input .string {
+  color: #032f62;
+}
+
+.theme-light .code-playground-input .number {
+  color: #005cc5;
+}
+
+.theme-light .code-playground-input .function {
+  color: #6f42c1;
+}
+
+.theme-light .code-playground-input .comment {
+  color: #6a737d;
+  font-style: italic;
+}
+
+.theme-light .code-playground-input .property {
+  color: #005cc5;
 }
 
 .terminal-output {
